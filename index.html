@@ -6,6 +6,7 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+
     <p>Rock Paper Scissors</p>
     <button onclick="
         playGame('rock', 'scissors', 'rock', 'paper');
@@ -19,12 +20,36 @@
         playGame('scissors', 'paper', 'scissors', 'rock');
     ">Scissors</button>
 
+    <p class="js-result"></p>
+    <p class="js-moves"></p>
+    <p class="js-score"></p>
+
     <button onclick="
         score.wins = 0;
         score.losses = 0;
         score.ties = 0;
         localStorage.removeItem('score');
+        updateScoreElement();
     ">Reset Score</button>
+
+    <br>
+    <br>
+    <br>
+    <hr>
+
+    <p>Youtube Subscribe Button</p>
+    <button onclick="
+        subscribe();
+    " class="js-subscribe-button">Subscribe</button>
+
+    <p>Amazon Shipping Calculator</p>
+    <input placeholder="Cost of order" class="js-cost-input" onkeydown="
+        handleCostKeydown(event);
+    ">
+    <button onclick="
+        calculateTotal();
+    ">Calculate</button>
+    <p class="js-total-cost"></p>
 
     <script src="index.js"></script>
 </body>

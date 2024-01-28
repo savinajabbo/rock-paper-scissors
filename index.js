@@ -4,6 +4,8 @@ let score = JSON.parse(localStorage.getItem('score')) || {
     ties: 0
 };
 
+updateScoreElement();
+
 function pickComputerMove() {
     const randomNumber = Math.random();
     let computerMove = '';
@@ -48,6 +50,47 @@ function playGame(playerMove, compMove1, compMove2, compMove3) {
 
     localStorage.setItem('score', JSON.stringify(score));
 
-    alert(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}
-Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
+    updateScoreElement();
+
+    document.querySelector('.js-result').
+        innerHTML = result;
+
+    document.querySelector('.js-moves').innerHTML
+        = `You picked ${playerMove}. Computer picked ${computerMove}.`
+}
+
+function updateScoreElement() {
+    document.querySelector('.js-score').
+        innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
+
+}
+
+function subscribe() {
+    const buttonElement = document.querySelector('.js-subscribe-button');
+
+    if (buttonElement.innerText === 'Subscribe') {
+        buttonElement.innerHTML = 'Subscribed';
+    }
+    else {
+        buttonElement.innerHTML = 'Subscribe';
+    }
+
+}
+
+function calculateTotal() {
+   const inputElement = document.querySelector('.js-cost-input');
+   let cost = Number(inputElement.value);
+
+   if (cost < 40) {
+    cost = cost + 10;
+   }
+
+   document.querySelector('.js-total-cost').
+    innerHTML = `$${cost}`;
+}
+
+function handleCostKeydown(event) {
+    if (event.key === 'Enter') {
+        calculateTotal();
+    }
 }
