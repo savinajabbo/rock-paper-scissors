@@ -19,6 +19,13 @@
         playGame('scissors', 'paper', 'scissors', 'rock');
     ">Scissors</button>
 
+    <button onclick="
+        score.wins = 0;
+        score.losses = 0;
+        score.ties = 0;
+        localStorage.removeItem('score');
+    ">Reset Score</button>
+
     <script src="index.js"></script>
 </body>
 </html>
